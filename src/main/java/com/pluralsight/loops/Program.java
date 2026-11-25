@@ -5,12 +5,8 @@ import java.util.Scanner;
 
 public class Program {
     public static void main(String[] args) {
-        Scanner myScanner = new Scanner(System.in);
-        ArrayList<Person> myPeople = new ArrayList<>();
-        ArrayList<Person> searchResults = new ArrayList<>();
-        String userInput;
-        float totalAge = 0;
 
+        ArrayList<Person> myPeople = new ArrayList<>();
         //MAKE 10 PEOPLE
         myPeople.add(new Person("Charlie ", "Harmon", 45));
         myPeople.add(new Person("Gabriela ", "Gould", 34));
@@ -24,11 +20,15 @@ public class Program {
         myPeople.add(new Person("Aida", "Hutchinson", 29));
 
 
-        //Initilize the youngest and oldest with the first person on the list to compare
-        int OldestAge = myPeople.get(0).age;
-        Person oldestPerson = myPeople.get(0);
+        Scanner myScanner = new Scanner(System.in);
+        ArrayList<Person> searchResults = new ArrayList<>();
+        String userInput;
+        float totalAge = 0;
 
-        int youngestAge = myPeople.get(0).age;
+
+
+        //Initilize the youngest and oldest with the first person on the list to compare
+        Person oldestPerson = myPeople.get(0);
         Person youngest = myPeople.get(0);
 
 
@@ -39,13 +39,11 @@ public class Program {
             if (item.firstName.equals(userInput) || item.lastName.equals(userInput)) {
                 searchResults.add(item);
             }
-            if (item.age < youngestAge) {
+            if (item.age < youngest.age) {
                 youngest = item;
-                youngestAge = item.age;
             }
-            if (item.age > OldestAge) {
+            if (item.age > oldestPerson.age) {
                 oldestPerson = item;
-                OldestAge = item.age;
             }
             totalAge += item.age;
         }
